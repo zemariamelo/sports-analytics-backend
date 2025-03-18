@@ -4,8 +4,7 @@ from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from database import Base, SessionLocal
-from models import Match  # ✅ FIX: Import Match from models.py
-
+from models import Match  # ✅ Import Match from models.py
 
 app = FastAPI()
 
@@ -23,6 +22,17 @@ def get_db():
     finally:
         db.close()
 
+# ✅ **Test Route: API Health Check**
+@app.get("/")
+def home():
+    return {"message": "Welcome to the Sports Analytics API"}
+
+# ✅ **New Route: Get All Matches from DB**
+@app.get("/matches")
+def get_matches(db: Session = Depends(get_db)):
+    matches = db.query(Match).all()
+    return matches
+
 # Define input schema for AI predictions
 class MatchPredictionRequest(BaseModel):
     goals_team1: int
@@ -32,7 +42,7 @@ class MatchPredictionRequest(BaseModel):
     fouls_team1: int
     fouls_team2: int
 
-# API Route: Predict match outcome using AI
+# ✅ **Route: Predict match outcome using AI**
 @app.post("/predict")
 def predict_match(request: MatchPredictionRequest):
     input_data = np.array([
