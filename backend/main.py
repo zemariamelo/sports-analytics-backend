@@ -3,7 +3,9 @@ import numpy as np
 from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from database import SessionLocal, Match
+from database import Base, SessionLocal
+from models import Match  # ✅ FIX: Import Match from models.py
+
 
 app = FastAPI()
 
