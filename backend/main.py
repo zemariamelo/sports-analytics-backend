@@ -17,8 +17,6 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-app = FastAPI()
-
 # Load trained AI model
 with open("models/match_predictor.pkl", "rb") as f:
     model = pickle.load(f)
