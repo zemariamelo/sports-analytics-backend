@@ -11,7 +11,7 @@ app = FastAPI()  # ✅ Define `app` first!
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://sports-analytics-frontend-3ea1qc2ht.vercel.app"],   # 🔄 Replace with your actual Vercel URL
+    allow_origins=["http://localhost:3000", "https://sports-analytics-frontend-ng8avpgm1.vercel.app"],   # 🔄 Replace with your actual Vercel URL
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
     allow_headers=["*"],  # Allow all headers
