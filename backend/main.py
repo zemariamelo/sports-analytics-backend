@@ -5,6 +5,15 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from database import Base, SessionLocal
 from models import Match  # ✅ Import Match from models.py
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Allow frontend requests
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
 
 app = FastAPI()
 
