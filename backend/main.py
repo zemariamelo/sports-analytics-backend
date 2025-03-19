@@ -7,6 +7,8 @@ from database import Base, SessionLocal
 from models import Match  # ✅ Import Match from models.py
 from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()  # ✅ Define `app` first!
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],  # Allow frontend requests
