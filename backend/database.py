@@ -10,3 +10,7 @@ engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
+
+# ✅ Import models and create tables
+from models import Match
+Base.metadata.create_all(bind=engine)  # 🚀 This ensures tables are created!
